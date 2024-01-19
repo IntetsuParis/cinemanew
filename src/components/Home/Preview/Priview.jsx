@@ -38,6 +38,12 @@ const Priview = () => {
       <div className={styles.photos}>
         <a href="#">
           <img className={styles.spider} src={Spider} alt="Spider" />
+          <Button>
+            <a href="#">
+              <img src={PlayTrailer} alt="Play Trailer" />
+            </a>
+          </Button>
+          <img className={styles.galaxy} src ={Galaxy}alt="Guardians of the Galaxy" />
         </a>
       </div>
     </div>

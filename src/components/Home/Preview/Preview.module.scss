@@ -75,12 +75,34 @@
   }
 
   .photos {
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+    .spider {
+      position: relative;
+      max-width: 100%;
+      height: auto;
+      z-index:  3;
+    }
+    .galaxy {
+      position: absolute;
+      max-width: 100%;
+      left: 210px;
+      bottom: 88px;
+      z-index: 1;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+    Button {
+      position: absolute;
+      max-width: 100%;
+      width: 112px;
+      height: 112px;
+      top: 50%; /* Position from the center of the .spider */
+      left: 50%; /* Position from the center of the .spider */
+      transform: translate(-50%, -50%); /* Center the button */
+      z-index: 3;
+    }
   }
-  .spider {
-    max-width: 100%;
-    height: auto;
-  }
+  
 }
