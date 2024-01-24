@@ -11,15 +11,28 @@ import Fire from './img/Fire.svg'
 function TrendingFilm() {
     const [movieList, setMovieList] = useState([]);
 
-  const getMovies=()=>{
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=cb46d76a0b00b19847f93f36a4873953')
-    .then(response => response.json())
-   .then(json=>setMovieList(json.results))
-  }
+    const getMovies = async () => {
+      try {
+        const response = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=cb46d76a0b00b19847f93f36a4873953');
+    
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+    
+        const json = await response.json();
+        
+        // Assuming setMovieList is a function that sets the movie list
+        setMovieList(json.results);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
+        // You may want to handle the error in a more user-friendly way in a production environment
+      }
+    };
 
   useEffect(()=> {
 getMovies()
   },[]) 
+
   return (
 <div className = {styles.header}>
     {/* <img src={Fire} alt="Trending" /> */}
