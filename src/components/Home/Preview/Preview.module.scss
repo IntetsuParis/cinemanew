@@ -76,6 +76,7 @@
 
   .photos {
     position: relative;
+    margin-right: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,6 +88,7 @@
     }
     .galaxy {
       position: absolute;
+      
       max-width: 100%;
       left: 210px;
       bottom: 88px;
