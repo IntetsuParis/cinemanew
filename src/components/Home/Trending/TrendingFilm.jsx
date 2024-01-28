@@ -22,6 +22,7 @@ const json = await response.json()
       }
     };
 
+
   useEffect(()=> {
 getMovies()
   },[]) 
