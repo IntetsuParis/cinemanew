@@ -1,1 +1,65 @@
 @import '../../../styles/variables.scss';
+
+    
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img {
+            width: 51px;
+    height: 42px;
+        };
+      }
+      
+      
+      .leftSection {
+        display: flex;
+        align-items: center;
+      }
+      
+      .rightSection {
+        margin-left: auto; /* Это переместит See more в правый угол */
+      }
+      .movie__container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        margin: 35px;
+        
+        img {
+    
+        width: 134px;
+        height: 196px;
+        
+        }
+        .movie__info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            h3 {
+                overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 143px;
+    text-align: center;
+    margin-bottom: -5px;
+
+            }
+        }
+        .movie__subinfo{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            img {
+                width: 3.396px;
+height: 3.296px;
+            }
+            
+        }
+      }
+      .film {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        
+      }
