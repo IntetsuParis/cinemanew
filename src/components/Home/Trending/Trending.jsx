@@ -1,26 +1,23 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-import styles from './Trending.module.scss'
+import styles from "./Trending.module.scss";
 
-import Film from './img/film.png'
+import Film from "./img/film.png";
 
-import Record from './img/Record.svg'
+import Record from "./img/Record.svg";
 
+const getImage = (poster_path) => {
+  return `https://image.tmdb.org/t/p/w500${poster_path}`;
+};
 
-const  getImage = (poster_path) =>{
-return  `https://image.tmdb.org/t/p/w500${poster_path}`
-
-}
-
-const Trending = ({title,poster_path,release_date,vote_average})=> {
-
+const Trending = ({ title, poster_path, release_date, vote_average }) => {
   const getYear = (dateString) => {
     const date = new Date(dateString);
     return date.getFullYear();
   };
- 
+
   return (
-   <div className={styles.movie__container}>
+    <div className={styles.movie__container}>
       <div className={styles.movies}>
         <img src={getImage(poster_path)} alt="Film" />
         <div className={styles.movie__info}>
@@ -33,7 +30,7 @@ const Trending = ({title,poster_path,release_date,vote_average})=> {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Trending
+export default Trending;
