@@ -13,18 +13,51 @@
 .leftSection {
   display: flex;
   align-items: center;
+  position: relative;
+  &:before {
+    content: " ";
+    background: rgba(80, 74, 121, 0.5);
+    width: 700px; /* Высота линии */
+    height: 3px; /* Длина линии */
+    /* размещаем линию справа */
+    right: 0;
+    left: 320px;
+    /* включаем абсолютное позиционирование относительно блока с relative */
+    position: absolute;
+  }
 }
 .leftSectionLikeThis {
+  position: relative;
   display: flex;
   align-items: center;
   margin-left: 20px;
+  text-transform: uppercase;
+  &:before {
+    content: " ";
+    background: rgba(80, 74, 121, 0.5);
+
+    width: 600px; /* Высота линии */
+    height: 3px; /* Длина линии */
+    /* размещаем линию справа */
+    right: 5px;
+    left: 320px;
+
+    /* включаем абсолютное позиционирование относительно блока с relative */
+    position: absolute;
+  }
 }
 
 .rightSection {
   margin-left: auto;
+  color: #c9c9c9;
+  font-size: 15px;
 }
 .rightSectionLikeThis {
   margin-left: auto;
+  color: #c9c9c9;
+
+  font-size: 15px;
+  position: relative;
 }
 .movie__container {
   display: flex;
