@@ -17,10 +17,10 @@
   &:before {
     content: " ";
     background: rgba(80, 74, 121, 0.5);
-    width: 700px; /* Высота линии */
+    width: 600px; /* Высота линии */
     height: 3px; /* Длина линии */
     /* размещаем линию справа */
-    right: 0;
+    right: 30px;
     left: 320px;
     /* включаем абсолютное позиционирование относительно блока с relative */
     position: absolute;

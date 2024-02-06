@@ -6,8 +6,6 @@ import Trending from "../Trending/Trending";
 
 import Record from "../Trending/img/Record.svg";
 
-import HeaderLikethis from "./HeaderLikethis";
-
 const getImage = (poster_path) => {
   return `https://image.tmdb.org/t/p/w500${poster_path}`;
 };
@@ -17,6 +15,7 @@ const LikeThis = ({ title, poster_path, release_date, vote_average }) => {
     const date = new Date(dateString);
     return date.getFullYear();
   };
+  const getRate = (vote_average) => vote_average.toFixed(2);
   return (
     <>
       <div className={styles.movie__container}>
@@ -27,7 +26,7 @@ const LikeThis = ({ title, poster_path, release_date, vote_average }) => {
             <div className={styles.movie__subinfo}>
               <p>{getYear(release_date)}</p>
               <img src={Record} alt="Live" />
-              <p>{vote_average}</p>
+              <p>{vote_average !== undefined ? getRate(vote_average) : "-"}</p>
             </div>
           </div>
         </div>

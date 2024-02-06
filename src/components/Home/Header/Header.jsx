@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import styles from './Header.module.scss';
+import styles from "./Header.module.scss";
 
-import logo from './img/logo.svg';
+import logo from "./img/logo.svg";
 
+import { Link } from "react-router-dom";
 
-
-const Header = () => {
+const Header = (props) => {
+  console.log(props);
   return (
     <ul className={styles.header}>
       <div className={styles.wrapper}>
@@ -17,7 +18,16 @@ const Header = () => {
         <div className={styles.navbar}>
           <ul>
             <li>
-              <a href="#">Home</a>
+              <Link
+                to={{
+                  pathname: "/",
+                  state: {
+                    fromLocation: true,
+                  },
+                }}
+              >
+                Home
+              </Link>
             </li>
             <li>
               <a href="#">Explore</a>

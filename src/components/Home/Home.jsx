@@ -17,7 +17,7 @@ const Home = () => {
       <Header />
       <Preview />
       <TrendingFilm />
-      <LikeThis />
+      {/* <LikeThis /> */}
     </div>
   );
 };
