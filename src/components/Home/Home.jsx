@@ -4,7 +4,7 @@ import styles from "./Home.module.scss";
 
 import Header from "./Header/Header";
 
-import Preview from "./Preview/Priview";
+import Preview from "./Preview/Preview";
 
 import Trending from "./Trending/Trending";
 
@@ -14,7 +14,7 @@ import LikeThis from "./LikeThis/LikeThis";
 const Home = () => {
   return (
     <div className={styles.container}>
-      <Header />
+      {/* <Header /> */}
       <Preview />
       <TrendingFilm />
       {/* <LikeThis /> */}

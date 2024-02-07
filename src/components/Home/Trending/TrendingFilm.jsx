@@ -75,6 +75,7 @@ function TrendingFilm() {
           <h2>See more</h2>
         </div>
       </div>
+
       <div className={styles.likefilm}>
         {YouMayLikeThis.map((film, index) => {
           return <LikeThis key={index} {...film} />;

@@ -12,7 +12,7 @@ const Header = (props) => {
     <ul className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <img src={logo} alt="Logo" />
+          <img component={Link} to="/" src={logo} alt="Logo" />
           <h1>Movies</h1>
         </div>
         <div className={styles.navbar}>
