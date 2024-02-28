@@ -17,12 +17,12 @@
   &:before {
     content: " ";
     background: rgba(80, 74, 121, 0.5);
-    width: 600px; /* Высота линии */
-    height: 3px; /* Длина линии */
-    /* размещаем линию справа */
+    width: 600px;
+    height: 3px;
+
     right: 30px;
     left: 320px;
-    /* включаем абсолютное позиционирование относительно блока с relative */
+
     position: absolute;
   }
 }
@@ -36,13 +36,11 @@
     content: " ";
     background: rgba(80, 74, 121, 0.5);
 
-    width: 600px; /* Высота линии */
-    height: 3px; /* Длина линии */
-    /* размещаем линию справа */
+    width: 600px;
+    height: 3px;
+
     right: 5px;
     left: 320px;
-
-    /* включаем абсолютное позиционирование относительно блока с relative */
     position: absolute;
   }
 }
@@ -101,4 +99,9 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+Link,
+a {
+  color: #ffffff; /* черный цвет ссылки */
+  text-decoration: none;
 }
