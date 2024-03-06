@@ -6,6 +6,8 @@ import Trending from "../Trending/Trending";
 
 import Record from "../Trending/img/Record.svg";
 
+import { Link, useLocation } from "react-router-dom";
+
 export const getImage = (poster_path) => {
   return `https://image.tmdb.org/t/p/w500${poster_path}`;
 };
@@ -16,22 +18,36 @@ export const getYear = (dateString) => {
 };
 export const getRate = (vote_average) => vote_average.toFixed(2);
 
-const LikeThis = ({ title, poster_path, release_date, vote_average }) => {
+const LikeThis = ({ id, title, poster_path, release_date, vote_average }) => {
   return (
     <>
-      <div className={styles.movie__container}>
-        <div className={styles.movies}>
-          <img src={getImage(poster_path)} alt="Film" />
-          <div className={styles.movie__info}>
-            <h3>{title}</h3>
-            <div className={styles.movie__subinfo}>
-              <p>{getYear(release_date)}</p>
-              <img src={Record} alt="Live" />
-              <p>{vote_average !== undefined ? getRate(vote_average) : "-"}</p>
+      <Link
+        className
+        to={`/movie-details`}
+        state={{
+          title,
+          poster_path,
+          release_date,
+          vote_average,
+          id,
+        }}
+      >
+        <div className={styles.movie__container}>
+          <div className={styles.movies}>
+            <img src={getImage(poster_path)} alt="Film" />
+            <div className={styles.movie__info}>
+              <h3>{title}</h3>
+              <div className={styles.movie__subinfo}>
+                <p>{getYear(release_date)}</p>
+                <img src={Record} alt="Live" />
+                <p>
+                  {vote_average !== undefined ? getRate(vote_average) : "-"}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

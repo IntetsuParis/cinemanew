@@ -12,8 +12,18 @@ const Header = (props) => {
     <ul className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <img component={Link} to="/" src={logo} alt="Logo" />
-          <h1>Movies</h1>
+          <Link
+            to={{
+              pathname: "/",
+              state: {
+                fromLocation: true,
+              },
+            }}
+          >
+            <img src={logo} alt="Logo" />
+
+            <h1>Movies</h1>
+          </Link>
         </div>
         <div className={styles.navbar}>
           <ul>

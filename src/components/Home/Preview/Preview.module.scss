@@ -101,9 +101,9 @@
       max-width: 100%;
       width: 112px;
       height: 112px;
-      top: 50%; /* Position from the center of the .spider */
-      left: 50%; /* Position from the center of the .spider */
-      transform: translate(-50%, -50%); /* Center the button */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: 3;
     }
   }
