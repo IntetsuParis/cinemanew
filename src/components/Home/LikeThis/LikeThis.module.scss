@@ -36,7 +36,12 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.pidoras {
-  display: flex;
-  justify-content: space-between;
+.imageContainer {
+  position: relative;
+}
+
+.favoriteIcon {
+  position: absolute;
+  bottom: 87px; /* Регулируйте отступ снизу */
+  right: 100px; /* Регулируйте отступ справа */
 }

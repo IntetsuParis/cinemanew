@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Header.module.scss";
 
 import logo from "./img/logo.svg";
+import personal from "./img/personal.svg";
 
 import { Link } from "react-router-dom";
 
@@ -40,7 +41,9 @@ const Header = (props) => {
               </Link>
             </li>
             <li>
-              <a href="#">Explore</a>
+              <Link className to={`/explore`} state={{}}>
+                <a href="#">Explore</a>
+              </Link>
             </li>
             <li>
               <a href="#">Genre</a>
@@ -51,8 +54,11 @@ const Header = (props) => {
             <li>
               <a href="#">Movies</a>
             </li>
+
             <li>
-              <a href="#">TV Shows</a>
+              <Link className to={`/account`} state={{}}>
+                <img className={styles.account} src={personal} alt="account" />
+              </Link>
             </li>
           </ul>
         </div>

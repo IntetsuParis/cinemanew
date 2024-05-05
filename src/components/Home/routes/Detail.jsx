@@ -12,7 +12,8 @@ const API_KEY = "cb46d76a0b00b19847f93f36a4873953";
 
 function Detail() {
   const location = useLocation();
-  const { id, title, poster_path, release_date, vote_average } = location.state;
+  const { id, title, poster_path, release_date, vote_average } =
+    location.state || {};
   const [trailerUrl, setTrailerUrl] = useState();
   const getTrailer = async () => {
     try {

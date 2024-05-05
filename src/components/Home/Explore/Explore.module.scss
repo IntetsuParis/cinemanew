@@ -1,0 +1,34 @@
+.movie__container {
+  width: 100%;
+}
+
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.movie {
+  width: calc(
+    30% - 20px
+  ); /* Вычитаем ширину отступов между фильмами из общей ширины фильма */
+  margin-bottom: 20px;
+  margin-right: 10px; /* Добавляем отступ между фильмами */
+}
+
+.movie img {
+  width: 100%;
+}
+
+.movie__info {
+  margin-top: 10px;
+}
+
+.movie__subinfo {
+  display: flex;
+  justify-content: space-between;
+  .vote__average {
+    color: red;
+  }
+}

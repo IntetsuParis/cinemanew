@@ -4,20 +4,29 @@ import Home from "./components/Home/Home";
 
 import Detail from "./components/Home/routes/Detail";
 
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Home/Header/Header";
+
+import Explore from "./components/Home/Explore/Explore";
+
+import Account from "./components/Home/Account/Account";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import { DataProvider } from "./components/Home/Сontext/DataProvider";
 
 function App() {
   return (
-    <div>
+    <DataProvider>
       <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movie-details" element={<Detail />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </DataProvider>
   );
 }
 

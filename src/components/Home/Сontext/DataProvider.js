@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 
-import styles from "./Trending.module.scss";
+// Создание контекста
+const DataContext = createContext();
 
-import Trending from "./Trending";
+// Создание хука для использования данных из контекста
+export const useData = () => useContext(DataContext);
 
-import Fire from "./img/Fire.svg";
-
-import LikeThis from "../LikeThis/LikeThis";
-
-function TrendingFilm() {
+// Компонент провайдера контекста, который будет хранить данные из API
+export const DataProvider = ({ children }) => {
   const [movieList, setMovieList] = useState([]);
   const [YouMayLikeThis, setYouMayLikeThis] = useState([]);
 
+  // Функция для получения данных из API
   const getMovies = async () => {
     try {
       const response = await fetch(
@@ -29,6 +29,7 @@ function TrendingFilm() {
       console.error("Error fetching movies:", error);
     }
   };
+
   const getLikeThis = async () => {
     try {
       const response = await fetch(
@@ -46,43 +47,17 @@ function TrendingFilm() {
       console.error("Error fetching movies:", error);
     }
   };
+
+  // Загрузка данных из API при монтировании компонента
   useEffect(() => {
     getMovies();
     getLikeThis();
   }, []);
 
+  // Возвращаем провайдер контекста с данными из API
   return (
-    <>
-      <div className={styles.header}>
-        <div className={styles.leftSection}>
-          <img src={Fire} alt="Trending" />
-          <h2>Trending</h2>
-        </div>
-        <div className={styles.rightSection}>
-          <h2>See more</h2>
-        </div>
-      </div>
-      <div className={styles.film}>
-        {movieList.map((movie, index) => {
-          return <Trending key={index} {...movie} />;
-        })}
-      </div>
-      <div className={styles.header}>
-        <div className={styles.leftSectionLikeThis}>
-          <h2>You may like this</h2>
-        </div>
-        <div className={styles.rightSectionLikeThis}>
-          <h2>See more</h2>
-        </div>
-      </div>
-
-      <div className={styles.likefilm}>
-        {YouMayLikeThis.map((film, index) => {
-          return <LikeThis key={index} {...film} />;
-        })}
-      </div>
-    </>
+    <DataContext.Provider value={{ movieList, YouMayLikeThis }}>
+      {children}
+    </DataContext.Provider>
   );
-}
-
-export default TrendingFilm;
+};
