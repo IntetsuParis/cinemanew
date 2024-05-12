@@ -2,16 +2,16 @@ import React from "react";
 
 import styles from "./LikeThis.module.scss";
 
-import Trending from "../Trending/Trending";
-
 import Record from "../Trending/img/Record.svg";
 
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import favorites from "./img/favorites.svg";
-import notFavorite from "./img/notFavorite.svg";
+import like from "./img/like.svg";
+import notLike from "./img/notLike.svg";
 import { useDispatch, useSelector } from "react-redux";
+import { actions } from "../store/favorites/favorites.slice";
+import useFavoritesToggle from "../../utils/favoritesUtils";
 
 export const getImage = (poster_path) => {
   return `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -23,22 +23,16 @@ export const getYear = (dateString) => {
 };
 export const getRate = (vote_average) => vote_average.toFixed(2);
 
-const LikeThis = ({ id, title, poster_path, release_date, vote_average }) => {
-  // const { favorites } = useSelector((state) => state);
-
-  // console.log(favorites);
-
-  // const dispatch = useDispatch();
-
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const toggleFavorite = (event) => {
-    event.stopPropagation();
-    if (event.target.classList.contains(styles.favoriteIcon)) {
-      setIsFavorite(!isFavorite);
-    }
-  };
-
+const LikeThis = ({
+  id,
+  title,
+  poster_path,
+  release_date,
+  vote_average,
+  original_title,
+}) => {
+  const film = { id, title, poster_path, release_date, vote_average };
+  const [isExists, handleToggleFavorite] = useFavoritesToggle(film);
   return (
     <>
       <div className={styles.movie__container}>
@@ -58,32 +52,22 @@ const LikeThis = ({ id, title, poster_path, release_date, vote_average }) => {
               <img src={getImage(poster_path)} alt="Film" />
             </Link>
 
-            {/* <p
-              className={styles.favoriteIcon}
-              alt="Favorites"
-              onClick={toggleFavorite}
-            >
-              {" "}
-              <img src={favorites} />
-            </p> */}
-
-            {isFavorite ? (
+            {isExists ? (
               <img
-                src={favorites}
+                src={like}
                 className={styles.favoriteIcon}
-                alt="Favorites"
-                onClick={toggleFavorite}
+                alt="Like"
+                onClick={() => handleToggleFavorite(id)}
               />
             ) : (
               <img
-                src={notFavorite}
+                src={notLike}
                 className={styles.favoriteIcon}
-                alt="notFavorite"
-                onClick={toggleFavorite}
+                alt="Not Like"
+                onClick={() => handleToggleFavorite(id)}
               />
             )}
           </div>
-
           <div className={styles.movie__info}>
             <h3>{title}</h3>
             <div className={styles.movie__subinfo}>

@@ -1,0 +1,35 @@
+.account__container {
+  display: flex;
+  align-items: flex-start;
+
+  .avatar {
+    margin-left: 50px;
+    img {
+      width: 500px;
+    }
+  }
+
+  .movieList {
+    margin-left: auto;
+    .movies {
+      list-style: none;
+      padding: 0;
+      margin-right: 50px;
+
+      .movie {
+        margin-bottom: 50px;
+        .movie__info {
+          display: flex;
+          align-items: center;
+
+          h3 {
+            margin-right: 10px;
+          }
+        }
+        img {
+          width: 350px;
+        }
+      }
+    }
+  }
+}

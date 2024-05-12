@@ -6,14 +6,25 @@ export const favoriteSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    toggleToFavorites: (state, { payload: film }) => {
-      const isExists = state.some((f) => f.id != film.id);
-      if (isExists) {
-        const index = state.findIndex((item) => item.id === film.id);
-        if (index !== -1) {
-          state.splice(index, 1);
-        }
-      } else state.push(film);
+    toggleToFavorites: (state, action) => {
+      const film = action.payload; // Здесь payload содержит весь фильм
+      const index = state.findIndex((f) => f.id === film.id); // Проверяем наличие по id фильма
+      if (index === -1) {
+        // Если фильм не найден в списке, добавляем его
+        state.push(film);
+      } else {
+        // Если фильм уже есть в списке, удаляем его
+        state.splice(index, 1);
+      }
+    },
+    removeFavorite: (state, action) => {
+      const { id } = action.payload; // Получаем id фильма из payload
+      // Находим индекс элемента для удаления
+      const index = state.findIndex((item) => item.id === id);
+      if (index !== -1) {
+        // Если элемент найден, удаляем его
+        state.splice(index, 1);
+      }
     },
   },
 });

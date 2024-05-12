@@ -24,7 +24,6 @@ function TrendingFilm() {
       const json = await response.json();
 
       setMovieList(json.results.slice(0, 12));
-      console.log(json.results);
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -41,7 +40,6 @@ function TrendingFilm() {
       const json = await response.json();
 
       setYouMayLikeThis(json.results.slice(0, 12));
-      console.log(json.results);
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
