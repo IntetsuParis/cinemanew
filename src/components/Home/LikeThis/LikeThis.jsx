@@ -1,38 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styles from "./LikeThis.module.scss";
 
 import Record from "../Trending/img/Record.svg";
 
-import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import like from "./img/like.svg";
+
 import notLike from "./img/notLike.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { actions } from "../store/favorites/favorites.slice";
+
 import useFavoritesToggle from "../../utils/favoritesUtils";
 
-export const getImage = (poster_path) => {
-  return `https://image.tmdb.org/t/p/w500${poster_path}`;
-};
+import getRate from "../../utils/getRate";
 
-export const getYear = (dateString) => {
-  const date = new Date(dateString);
-  return date.getFullYear();
-};
-export const getRate = (vote_average) => vote_average.toFixed(2);
+import getImage from "../../utils/getImage";
 
-const LikeThis = ({
-  id,
-  title,
-  poster_path,
-  release_date,
-  vote_average,
-  original_title,
-}) => {
+import getYear from "../../utils/getYear";
+
+const LikeThis = ({ id, title, poster_path, release_date, vote_average }) => {
   const film = { id, title, poster_path, release_date, vote_average };
   const [isExists, handleToggleFavorite] = useFavoritesToggle(film);
+
   return (
     <>
       <div className={styles.movie__container}>

@@ -1,7 +1,12 @@
 import React from "react";
-import { DataProvider, useData } from "../Сontext/DataProvider";
+import { useData } from "../Сontext/DataProvider";
 import styles from "./Explore.module.scss";
-import LikeThis, { getImage, getYear, getRate } from "../LikeThis/LikeThis";
+
+import getRate from "../../utils/getRate";
+
+import getImage from "../../utils/getImage";
+
+import getYear from "../../utils/getYear";
 
 const Explorer = () => {
   const { movieList, setMovieList } = useData();

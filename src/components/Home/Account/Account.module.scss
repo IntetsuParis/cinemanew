@@ -1,16 +1,25 @@
+body.active-modal {
+  overflow-y: hidden;
+}
+
 .account__container {
   display: flex;
   align-items: flex-start;
 
   .avatar {
     margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     img {
       width: 500px;
     }
+    button {
+      margin-top: 10px;
+    }
   }
-
   .movieList {
-    margin-left: auto;
+    margin-left: 50px;
     .movies {
       list-style: none;
       padding: 0;
@@ -20,10 +29,28 @@
         margin-bottom: 50px;
         .movie__info {
           display: flex;
-          align-items: center;
+          .release_date {
+            margin-left: 5px;
+            margin-right: 50px;
+          }
+          .personal__raiting {
+            margin-left: 30px;
+          }
+          button {
+            margin-left: 200px;
+          }
 
           h3 {
             margin-right: 10px;
+            margin-bottom: 0; /* Добавлено */
+          }
+
+          .rating {
+            margin-bottom: 5px; /* Добавлено */
+          }
+
+          .release_date {
+            margin-left: auto; /* Добавлено */
           }
         }
         img {
@@ -31,5 +58,45 @@
         }
       }
     }
+  }
+  .modal {
+    position: absolute;
+    background: rgb(10, 10, 10);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    .ratingItem {
+      label {
+        input {
+          appearance: none;
+
+          border-radius: 50%;
+          width: 16px;
+          height: 16px;
+
+          border: 2px solid #999;
+          transition: 0.2s all ease-in-out;
+          margin-right: 5px;
+
+          position: relative;
+          top: 4px;
+
+          &:checked {
+            border: 8px solid rgb(94, 5, 5);
+          }
+        }
+      }
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .modalContent {
+    padding: 20px;
+    border-radius: 10px;
   }
 }

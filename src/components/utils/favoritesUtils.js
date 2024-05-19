@@ -11,7 +11,7 @@ const useFavoritesToggle = (film) => {
   useEffect(() => {
     setIsExists(favorites.some((f) => f.id === film.id));
     console.log(favorites);
-  }, [favorites, film]);
+  }, [favorites]);
 
   const handleToggleFavorite = () => {
     if (isExists) {
