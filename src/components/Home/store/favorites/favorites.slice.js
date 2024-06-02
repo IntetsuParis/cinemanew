@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [];
 
-export const favoriteSlice = createSlice({
+const favoriteSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
@@ -10,10 +10,8 @@ export const favoriteSlice = createSlice({
       const film = action.payload; // Здесь payload содержит весь фильм
       const index = state.findIndex((f) => f.id === film.id); // Проверяем наличие по id фильма
       if (index === -1) {
-        // Если фильм не найден в списке, добавляем его
         state.push(film);
       } else {
-        // Если фильм уже есть в списке, удаляем его
         state.splice(index, 1);
       }
     },
@@ -29,4 +27,5 @@ export const favoriteSlice = createSlice({
   },
 });
 
-export const { actions, reducer } = favoriteSlice;
+export const { toggleToFavorites, removeFavorite } = favoriteSlice.actions;
+export const favoriteReducer = favoriteSlice.reducer;

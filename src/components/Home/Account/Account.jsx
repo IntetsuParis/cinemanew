@@ -1,18 +1,21 @@
 import React, { useState, useRef } from "react";
 import styles from "./Account.module.scss";
-import { useFavorites } from "../../../hooks/useFavorites";
 
+import { useActions } from "../../../hooks/useActions";
 import avatar from "./img/avatar.jpg";
 import getRate from "../../utils/getRate";
 import getYear from "../../utils/getYear";
+import { useSelector } from "react-redux";
 
 const Account = () => {
-  const { favorites } = useFavorites();
+  const { setRating, setAvatar } = useActions();
+  const storedImage = useSelector((state) => state.avatar.image); // Получаем изображение аватара из состояния Redux
+  const userRatings = useSelector((state) => state.rating.userRating); // Получаем рейтинги пользователя из состояния Redux
+  const favorites = useSelector((state) => state.favorites); // Получаем избранные фильмы из состояния Redux
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(storedImage);
   const [modal, setModal] = useState(false);
   const [selectedFilm, setSelectedFilm] = useState(null);
-  const [userRating, setUserRating] = useState({});
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
 
   const inputRef = useRef(null);
@@ -25,7 +28,6 @@ const Account = () => {
         left: buttonRect.left + window.scrollX,
       });
     }
-    console.log(selectedFilm);
     setSelectedFilm(film);
     setModal(!modal);
 
@@ -36,43 +38,35 @@ const Account = () => {
     }
   };
 
-  const toggleContainer = () => {
-    if (modal) {
-      setModal(!modal);
-    } else {
-      return;
-    }
-  };
-
-  const handleImageClick = () => {
+  const handleImageClick = (e) => {
     inputRef.current.click();
+    e.stopPropagation();
   };
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+
     if (file) {
-      setImage(file);
+      const imageUrl = URL.createObjectURL(file);
+      setImage(imageUrl);
+      setAvatar(imageUrl); // Используем setAvatar из useActions
     }
   };
 
   const handleRatingChange = (event) => {
     if (selectedFilm) {
-      setUserRating({
-        ...userRating,
-
-        [selectedFilm.id]: event.target.value,
-      });
+      const rating = event.target.value;
+      setRating({ filmId: selectedFilm.id, rating }); // Используем setRating из useActions
     }
   };
-  console.log(userRating);
+
   return (
-    <div className={styles.account__container} onClick={toggleContainer}>
+    <div
+      className={styles.account__container}
+      onClick={() => modal && setModal(false)}
+    >
       <div className={styles.avatar} onClick={handleImageClick}>
-        {image ? (
-          <img src={URL.createObjectURL(image)} alt="Avatar" />
-        ) : (
-          <img src={avatar} alt="Avatar" />
-        )}
+        <img src={image || avatar} alt="Avatar" />
         <input type="file" ref={inputRef} onChange={handleImageChange} hidden />
         <button type="button" onClick={handleImageClick}>
           Change avatar
@@ -95,9 +89,9 @@ const Account = () => {
                 >
                   Rate the film
                 </button>
-                {userRating[film.id] && (
+                {userRatings[film.id] && (
                   <p className={styles.personal__raiting}>
-                    Your rating: {userRating[film.id]}
+                    Your rating: {userRatings[film.id]}
                   </p>
                 )}
               </div>
@@ -128,6 +122,7 @@ const Account = () => {
                       type="radio"
                       name="rating"
                       value={index + 1}
+                      checked={userRatings[selectedFilm?.id] == index + 1}
                     />
                     {index + 1}
                   </label>

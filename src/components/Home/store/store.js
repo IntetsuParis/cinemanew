@@ -1,5 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { reducer as favoritesReducer } from "./favorites/favorites.slice";
+import { favoriteReducer } from "./favorites/favorites.slice";
+
+import { ratingReducer } from "./favorites/ratingSlice";
+import { avatarReducer } from "./favorites/avatarSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -9,7 +12,9 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  favorites: favoritesReducer,
+  favorites: favoriteReducer,
+  avatar: avatarReducer,
+  rating: ratingReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

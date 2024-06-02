@@ -1,11 +1,20 @@
 import { bindActionCreators } from "@reduxjs/toolkit";
 import { useMemo } from "react";
 import { useDispatch } from "react-redux";
-import { actions } from "../components/Home/store/favorites/favorites.slice";
+import { setRating } from "../components/Home/store/favorites/ratingSlice";
+import { setAvatar } from "../components/Home/store/favorites/avatarSlice";
+import {
+  toggleToFavorites,
+  removeFavorite,
+} from "../components/Home/store/favorites/favorites.slice";
 
 const rootActions = {
-  ...actions,
+  setRating,
+  setAvatar,
+  removeFavorite,
+  toggleToFavorites, // Include setRating from the rating slice
 };
+
 export const useActions = () => {
   const dispatch = useDispatch();
 
