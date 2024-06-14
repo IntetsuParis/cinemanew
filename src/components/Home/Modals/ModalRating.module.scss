@@ -1,0 +1,43 @@
+.modal {
+  position: absolute;
+  background: rgb(10, 10, 10);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  .ratingItem {
+    label {
+      input {
+        appearance: none;
+        cursor: pointer;
+
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+
+        border: 2px solid #ffffff;
+        transition: 0.2s all ease-in-out;
+        margin-right: 5px;
+
+        position: relative;
+        top: 4px;
+        &:checked {
+          border: 8px solid rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.modalContent {
+  padding: 20px;
+  border-radius: 10px;
+  .closeModal {
+    cursor: pointer;
+  }
+}

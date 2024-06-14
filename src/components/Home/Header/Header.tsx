@@ -1,49 +1,28 @@
 import React from "react";
-
 import styles from "./Header.module.scss";
-
 import logo from "./img/logo.svg";
 import personal from "./img/personal.svg";
-
 import { Link } from "react-router-dom";
 
-const Header = (props) => {
-  console.log(props);
+const Header = () => {
   return (
     <ul className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <Link
-            to={{
-              pathname: "/",
-              state: {
-                fromLocation: true,
-              },
-            }}
-          >
+          <Link to="/" state={{ fromLocation: true }}>
             <img src={logo} alt="Logo" />
-
             <h1>Movies</h1>
           </Link>
         </div>
         <div className={styles.navbar}>
           <ul>
             <li>
-              <Link
-                to={{
-                  pathname: "/",
-                  state: {
-                    fromLocation: true,
-                  },
-                }}
-              >
+              <Link to="/" state={{ fromLocation: true }}>
                 Home
               </Link>
             </li>
             <li>
-              <Link className to={`/explore`} state={{}}>
-                <a href="#">Explore</a>
-              </Link>
+              <Link to="/explore">Explore</Link>
             </li>
             <li>
               <a href="#">Genre</a>
@@ -54,9 +33,8 @@ const Header = (props) => {
             <li>
               <a href="#">Movies</a>
             </li>
-
             <li>
-              <Link className to={`/account`} state={{}}>
+              <Link to="/account">
                 <img className={styles.account} src={personal} alt="account" />
               </Link>
             </li>

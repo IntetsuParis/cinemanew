@@ -1,20 +1,20 @@
-import React from 'react';
+import React from "react";
 
-import styles from './Preview.module.scss';
+import styles from "./Preview.module.scss";
 
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 
-import Play from './img/play.svg';
+import Play from "./img/play.svg";
 
-import Spider from './img/spider.svg';
+import Spider from "./img/spider.svg";
 
-import Galaxy from './img/galaxy.svg';
+import Galaxy from "./img/galaxy.svg";
 
-import PlayTrailer from './img/PlayTrailer.svg';
+import PlayTrailer from "./img/PlayTrailer.svg";
 
-const Priview = () => {
+const Priview: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -22,8 +22,9 @@ const Priview = () => {
           <h2>FIND MOVIES</h2>
           <h1>TV shows and more</h1>
           <p>
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-            unknown printer took a galley of type and scrambled it to make a type specimen book.
+            Lorem Ipsum has been the industry's standard dummy text ever since
+            the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
           </p>
         </div>
         <div className={styles.button}>
@@ -43,7 +44,11 @@ const Priview = () => {
               <img src={PlayTrailer} alt="Play Trailer" />
             </a>
           </Button>
-          <img className={styles.galaxy} src ={Galaxy}alt="Guardians of the Galaxy" />
+          <img
+            className={styles.galaxy}
+            src={Galaxy}
+            alt="Guardians of the Galaxy"
+          />
         </a>
       </div>
     </div>
