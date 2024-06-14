@@ -17,8 +17,17 @@ import getRate from "../../utils/getRate";
 import getImage from "../../utils/getImage";
 
 import getYear from "../../utils/getYear";
+import { IFilm } from "../../../@types/film.types";
 
-const LikeThis = ({ id, title, poster_path, release_date, vote_average }) => {
+
+
+const LikeThis: React.FC<IFilm> = ({
+  id,
+  title,
+  poster_path,
+  release_date,
+  vote_average,
+}) => {
   const film = { id, title, poster_path, release_date, vote_average };
   const [isExists, handleToggleFavorite] = useFavoritesToggle(film);
 
@@ -27,7 +36,6 @@ const LikeThis = ({ id, title, poster_path, release_date, vote_average }) => {
       <div className={styles.movies}>
         <div className={styles.imageContainer}>
           <Link
-            className
             to={`/movie-details`}
             state={{
               title,

@@ -1,12 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IFilm } from "../../../../@types/film.types";
 
-const initialState = [];
+const initialState: IFilm[] = [];
 
 const favoriteSlice = createSlice({
   name: "favorites",
   initialState,
   reducers: {
-    toggleToFavorites: (state, action) => {
+    toggleToFavorites: (state, action: PayloadAction<IFilm>) => {
       const film = action.payload; // Здесь payload содержит весь фильм
       const index = state.findIndex((f) => f.id === film.id); // Проверяем наличие по id фильма
       if (index === -1) {
@@ -15,7 +16,7 @@ const favoriteSlice = createSlice({
         state.splice(index, 1);
       }
     },
-    removeFavorite: (state, action) => {
+    removeFavorite: (state, action: PayloadAction<{ id: number }>) => {
       const { id } = action.payload; // Получаем id фильма из payload
       // Находим индекс элемента для удаления
       const index = state.findIndex((item) => item.id === id);

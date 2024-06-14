@@ -12,7 +12,7 @@ const rootActions = {
   setRating,
   setAvatar,
   removeFavorite,
-  toggleToFavorites, // Include setRating from the rating slice
+  toggleToFavorites, 
 };
 
 export const useActions = () => {

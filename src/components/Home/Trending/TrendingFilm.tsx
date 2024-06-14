@@ -5,6 +5,7 @@ import Trending from "./Trending";
 import Fire from "./img/Fire.svg";
 import LikeThis from "../LikeThis/LikeThis";
 import useMoviesApi from "../../utils/useMoviesApi";
+import { Skeleton } from "@mui/material";
 
 function TrendingFilm() {
   const { movieList, youMayLikeThis } = useMoviesApi();

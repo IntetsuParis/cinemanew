@@ -11,7 +11,7 @@ import Trending from "./Trending/Trending";
 import TrendingFilm from "./Trending/TrendingFilm";
 import LikeThis from "./LikeThis/LikeThis";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <div className={styles.container}>
       {/* <Header /> */}

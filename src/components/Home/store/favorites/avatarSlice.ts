@@ -1,6 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+type AvatarState = {
+  image: string | null;
+};
+
+const initialState: AvatarState = {
   image: localStorage.getItem("avatar") || null,
 };
 
@@ -8,7 +12,7 @@ const avatarSlice = createSlice({
   name: "avatar",
   initialState,
   reducers: {
-    setAvatar: (state, action) => {
+    setAvatar: (state, action: PayloadAction<string>) => {
       state.image = action.payload;
       localStorage.setItem("avatar", action.payload);
     },
