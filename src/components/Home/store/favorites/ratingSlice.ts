@@ -1,7 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initalUserRatings = localStorage.getItem("ratings")
+  ? JSON.parse(localStorage.getItem("ratings") as string)
+  : {};
+
 const initialState = {
-  userRating: JSON.parse(localStorage.getItem("ratings")) || {},
+  userRating: initalUserRatings,
 };
 
 const ratingSlice = createSlice({

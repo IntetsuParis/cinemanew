@@ -1,9 +1,11 @@
 // useMoviesApi.js
 import { useState, useEffect } from "react";
 
+import { IFilm } from "../../@types/film.types";
+
 const useMoviesApi = () => {
-  const [movieList, setMovieList] = useState([]);
-  const [youMayLikeThis, setYouMayLikeThis] = useState([]);
+  const [movieList, setMovieList] = useState<IFilm[]>([]);
+  const [youMayLikeThis, setYouMayLikeThis] = useState<IFilm[]>([]);
 
   const getMovies = async () => {
     try {

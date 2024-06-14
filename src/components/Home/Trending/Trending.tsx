@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from "react";
-
 import styles from "./Trending.module.scss";
-
-import Film from "./img/film.png";
 
 import { Link } from "react-router-dom";
 import LikeThis from "../LikeThis/LikeThis";
 
-const Trending = ({ id, title, poster_path, release_date, vote_average }) => {
+import { IFilm } from "../../../@types/film.types";
+
+const Trending: React.FC<IFilm> = ({
+  id,
+  title,
+  poster_path,
+  release_date,
+  vote_average,
+}) => {
   return (
     <>
       <Link
-        className
         to={`/movie-details`}
         state={{
           title,
