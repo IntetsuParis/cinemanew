@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+import avatar from "../../Account/img/avatar.svg";
+
 type AvatarState = {
   image: string | null;
 };
 
 const initialState: AvatarState = {
-  image: localStorage.getItem("avatar") || null,
+  image: localStorage.getItem("avatar") || avatar,
 };
 
 const avatarSlice = createSlice({

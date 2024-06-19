@@ -1,0 +1,10 @@
+.div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Занимает всю высоту окна браузера */
+  width: 100%; /* Занимает всю ширину родительского элемента */
+  p {
+    margin-left: 50px;
+  }
+}

@@ -22,6 +22,9 @@ body.active-modal {
   }
   .movieList {
     margin-left: 50px;
+    .wrapper {
+      margin: 50px auto;
+    }
     .button_rating {
       color: #000000;
       border-radius: 8px;
