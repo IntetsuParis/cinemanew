@@ -1,14 +1,21 @@
 // TrendingFilm.js
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Trending.module.scss";
 import Trending from "./Trending";
 import Fire from "./img/Fire.svg";
 import LikeThis from "../LikeThis/LikeThis";
 import useMoviesApi from "../../utils/useMoviesApi";
-import { Skeleton } from "@mui/material";
+import SkeletonTrending from "./SkeletonTrending/SkeletonTrending";
 
 function TrendingFilm() {
   const { movieList, youMayLikeThis } = useMoviesApi();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (movieList.length > 0 && youMayLikeThis.length > 0) {
+      setLoading(false);
+    }
+  }, [movieList, youMayLikeThis]);
 
   return (
     <>
@@ -22,9 +29,9 @@ function TrendingFilm() {
         </div>
       </div>
       <div className={styles.film}>
-        {movieList.map((movie, index) => {
-          return <Trending key={index} {...movie} />;
-        })}
+        {loading
+          ? Array.from({ length: 12 }).map((_, index) => <SkeletonTrending />)
+          : movieList.map((movie, index) => <Trending {...movie} />)}
       </div>
       <div className={styles.header}>
         <div className={styles.leftSectionLikeThis}>
@@ -36,9 +43,11 @@ function TrendingFilm() {
       </div>
 
       <div className={styles.likefilm}>
-        {youMayLikeThis.map((film, index) => {
-          return <LikeThis key={index} {...film} />;
-        })}
+        {youMayLikeThis.map((film, index) => (
+          <div className={styles.movie} key={index}>
+            <LikeThis {...film} />
+          </div>
+        ))}
       </div>
     </>
   );

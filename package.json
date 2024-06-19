@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@heliofi/checkout-react": "^1.4.0",
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.19",
     "@mui/styled-engine-sc": "^6.0.0-alpha.7",
@@ -16,6 +17,8 @@
     "@types/node": "^20.14.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-content-loader": "^7.0.1",
@@ -54,6 +57,7 @@
     ]
   },
   "devDependencies": {
-    "typescript": "^5.4.5"
-  }
+    "typescript": "^4.9.5"
+  },
+  "proxy": "http://localhost:3001"
 }

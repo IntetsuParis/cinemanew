@@ -2,15 +2,16 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./Account.module.scss";
 
 import { useActions } from "../../../hooks/useActions";
-import avatarDefault from "./img/avatar.jpg";
+import avatarDefault from "./img/avatar.svg";
 import getRate from "../../utils/getRate";
 import getYear from "../../utils/getYear";
 import { useSelector } from "react-redux";
 import ModalRating from "../Modals/ModalRating";
 
 import { RootState } from "../store/store";
-import { IFilm } from "../../../@types/film.types";
+
 import ModalHandler from "../Modals/modalHandler";
+import AccountHelper from "./AccountHelper/AccountHelper";
 
 const Account = () => {
   const { setRating, setAvatar } = useActions();
@@ -20,17 +21,9 @@ const Account = () => {
   );
   const favorites = useSelector((state: RootState) => state.favorites);
 
-  const [image, setImage] = useState<string>(avatarDefault);
+  const [image, setImage] = useState<string>(storedImage || "");
 
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (storedImage) {
-      setImage(storedImage);
-    } else {
-      setImage(avatarDefault);
-    }
-  }, [storedImage]);
 
   const handleImageClick = (
     e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>
@@ -49,6 +42,7 @@ const Account = () => {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
       setAvatar(imageUrl);
+      localStorage.setItem("avatar", imageUrl);
     }
   };
 
@@ -66,7 +60,12 @@ const Account = () => {
           onClick={() => modal && toggleModal(null, null)}
         >
           <div className={styles.avatar} onClick={handleImageClick}>
-            <img src={image} alt="Avatar" />
+            {image ? (
+              <img src={image} alt="Avatar" />
+            ) : (
+              <img src={avatarDefault} alt="Avatar" />
+            )}
+
             <input
               type="file"
               ref={inputRef}
@@ -81,30 +80,36 @@ const Account = () => {
           <div className={styles.movieList}>
             <h2>Favorite movies:</h2>
             <ul className={styles.movies}>
-              {favorites.map((film, index) => (
-                <li key={film.id} className={styles.movie}>
-                  <div className={styles.movie__info}>
-                    <h3>{`${index + 1}. ${film.title}`}</h3>
-                    <p className={styles.release_date}>
-                      Release Date: {getYear(film.release_date)}
-                    </p>
-                    <button
-                      className={styles.button_rating}
-                      onClick={(e) => toggleModal(film, e)}
-                    >
-                      <span> Rate the film </span>
-                    </button>
-                    {userRatings[film.id] && (
-                      <p className={styles.personal__raiting}>
-                        Your rating: {userRatings[film.id]}
+              {favorites.length > 0 ? (
+                favorites.map((film, index) => (
+                  <li key={film.id} className={styles.movie}>
+                    <div className={styles.movie__info}>
+                      <h3>{`${index + 1}. ${film.title}`}</h3>
+                      <p className={styles.release_date}>
+                        Release Date: {getYear(film.release_date)}
                       </p>
-                    )}
-                  </div>
-                  <p className={styles.rating}>
-                    Rating: {getRate(film.vote_average)}
-                  </p>
-                </li>
-              ))}
+                      <button
+                        className={styles.button_rating}
+                        onClick={(e) => toggleModal(film, e)}
+                      >
+                        <span> Rate the film </span>
+                      </button>
+                      {userRatings[film.id] && (
+                        <p className={styles.personal__raiting}>
+                          Your rating: {userRatings[film.id]}
+                        </p>
+                      )}
+                    </div>
+                    <p className={styles.rating}>
+                      Rating: {getRate(film.vote_average)}
+                    </p>
+                  </li>
+                ))
+              ) : (
+                <div className={styles.wrapper}>
+                  <AccountHelper />
+                </div>
+              )}
             </ul>
           </div>
 

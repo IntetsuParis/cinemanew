@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./Detail.module.scss";
-
-import { useLocation } from "react-router-dom";
-
 import getYear from "../../utils/getYear";
-
 import getImage from "../../utils/getImage";
-
 import getRate from "../../utils/getRate";
-
 import ReactPlayer from "react-player";
 import useDetailApi from "../../utils/useDetailApi";
-
 import Skeleton from "../../Skeleton/Skeleton";
+import { HelioCheckout } from "@heliofi/checkout-react"; //
+import axios from "axios";
+
+import { API_KEY, SECRET_API_KEY } from "../../../.env";
 
 interface DetailProps {
   title?: string;
@@ -24,13 +21,12 @@ interface DetailProps {
 }
 
 function Detail() {
-  const [loading, setLoading] = useState(true);
-
-  const { trailerUrl } = useDetailApi();
-  const [showTrailer, setShowTrailer] = useState(false);
   const { state } = useLocation();
   const { title, poster_path, release_date, vote_average } =
-    (state as DetailProps) || {};
+    state as DetailProps;
+  const { trailerUrl } = useDetailApi();
+  const [loading, setLoading] = useState(true);
+  const [showTrailer, setShowTrailer] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,6 +36,18 @@ function Detail() {
     return () => clearTimeout(timer);
   }, []);
 
+  type NetworkType = "main" | "test"; // заглушка для тса
+  type DisplayType = "button" | "inline"; // еще одна заглушка
+  const helioConfig = {
+    paylinkId: "66721781ed17a2d12654dfb9",
+    network: "test" as NetworkType,
+    display: "button" as DisplayType, // Указываем тип DisplayType для параметра display
+    onSuccess: (event: any) => console.log("Успешная оплата:", event), // тут я понятия не имею какой ивент писать вообще
+    onError: (event: any) => console.error("Ошибка оплаты:", event),
+    onPending: (event: any) => console.log("Ожидание оплаты:", event),
+    onCancel: () => console.log("Отмена оплаты"),
+    onStartPayment: () => console.log("Начало процесса оплаты"),
+  };
   return (
     <>
       {loading ? (
@@ -70,10 +78,14 @@ function Detail() {
                 }}
               />
             )}
+            <div className={styles.payment}>
+              <HelioCheckout config={helioConfig} />
+            </div>
           </div>
         </div>
       )}
     </>
   );
 }
+
 export default Detail;
