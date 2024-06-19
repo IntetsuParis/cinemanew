@@ -13,6 +13,7 @@
 
 # Secret
 .env
+.env.js
 
 # misc
 .DS_Store

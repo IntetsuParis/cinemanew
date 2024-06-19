@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { IFilm } from "../../../@types/film.types";
 
-const useSortedMovies = (movieList: IFilm[]) => {
+const useSortedMovies = (exploreList: IFilm[]) => {
   const [sortByTitle, setSortByTitle] = useState("default");
   const [sortByDate, setSortByDate] = useState("default");
   const [sortByRate, setSortByRate] = useState("default");
@@ -25,7 +25,7 @@ const useSortedMovies = (movieList: IFilm[]) => {
   };
 
   const sortedMovies = useMemo(() => {
-    return [...movieList].sort((a, b) => {
+    return [...exploreList].sort((a, b) => {
       if (sortByTitle !== "default") {
         if (sortByTitle === "title-asc") return a.title.localeCompare(b.title);
         if (sortByTitle === "title-desc") return b.title.localeCompare(a.title);
@@ -48,7 +48,7 @@ const useSortedMovies = (movieList: IFilm[]) => {
       }
       return 0;
     });
-  }, [movieList, sortByTitle, sortByDate, sortByRate]);
+  }, [exploreList, sortByTitle, sortByDate, sortByRate]);
 
   return {
     sortByTitle,

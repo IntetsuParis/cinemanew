@@ -29,7 +29,7 @@
 
 .movie {
   width: calc(
-    30% - 20px
+    20% - 10px
   ); /* Вычитаем ширину отступов между фильмами из общей ширины фильма */
   margin-bottom: 20px;
   margin-right: 10px; /* Добавляем отступ между фильмами */
@@ -39,13 +39,17 @@
   width: 100%;
 }
 
-.movie__info {
+.movie__info h3 {
   margin-top: 10px;
+  padding: 0;
+  font-size: 20px;
+  height: 2.5em;
 }
 
 .movie__subinfo {
   display: flex;
   justify-content: space-between;
+
   .vote__average {
     color: red;
   }

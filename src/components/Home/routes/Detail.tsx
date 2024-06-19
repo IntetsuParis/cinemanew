@@ -8,9 +8,8 @@ import ReactPlayer from "react-player";
 import useDetailApi from "../../utils/useDetailApi";
 import Skeleton from "../../Skeleton/Skeleton";
 import { HelioCheckout } from "@heliofi/checkout-react"; //
+import { API_KEY } from "../../../.env";
 import axios from "axios";
-
-import { API_KEY, SECRET_API_KEY } from "../../../.env";
 
 interface DetailProps {
   title?: string;

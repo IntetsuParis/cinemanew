@@ -16,7 +16,7 @@ import { IFilm } from "../../../@types/film.types";
 import { Link } from "react-router-dom";
 
 const Explorer: FC = () => {
-  const { movieList, youMayLikeThis } = useMoviesApi();
+  const { exploreList } = useMoviesApi();
   const {
     sortByTitle,
     sortByDate,
@@ -25,7 +25,7 @@ const Explorer: FC = () => {
     handleTitleSortChange,
     handleDateSortChange,
     handleRateSortChange,
-  } = useSortedMovies(movieList);
+  } = useSortedMovies(exploreList);
 
   return (
     <div className={styles.movie__container}>
