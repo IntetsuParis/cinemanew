@@ -1,0 +1,27 @@
+input {
+  padding: 10px;
+  font-size: 16px;
+
+  border-right: none;
+  border-radius: 10px;
+  outline: none;
+  &:focus {
+    border: solid 3px red;
+  }
+}
+
+button {
+  margin-left: 10px;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+}

@@ -25,23 +25,6 @@ const useMoviesApi = () => {
       console.error("Error fetching movies:", error);
     }
   };
-  const getExpoloreMovies = async () => {
-    try {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/movie/popular?api_key=cb46d76a0b00b19847f93f36a4873953&language=en-US"
-      );
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const json = await response.json();
-      console.log(`Здесь эксплор `, json.results);
-      setExploreList(json.results.slice(0, 50));
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-    }
-  };
 
   const getLikeThis = async () => {
     try {
@@ -63,7 +46,6 @@ const useMoviesApi = () => {
   useEffect(() => {
     getMovies();
     getLikeThis();
-    getExpoloreMovies();
   }, []);
 
   return { movieList, youMayLikeThis, exploreList };

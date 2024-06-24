@@ -2,8 +2,17 @@
 
 .movie__container {
   display: flex;
+
   width: 100%;
 }
+.search__container {
+  margin-left: 50px;
+  .search {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .filter {
   display: flex;
   flex-direction: column;
@@ -33,6 +42,7 @@
   ); /* Вычитаем ширину отступов между фильмами из общей ширины фильма */
   margin-bottom: 20px;
   margin-right: 10px; /* Добавляем отступ между фильмами */
+  margin-top: 50px;
 }
 
 .movie img {
@@ -53,4 +63,11 @@
   .vote__average {
     color: red;
   }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
