@@ -8,8 +8,9 @@ import ReactPlayer from "react-player";
 import useDetailApi from "../../utils/useDetailApi";
 import Skeleton from "../../Skeleton/Skeleton";
 import { HelioCheckout } from "@heliofi/checkout-react"; //
-import { API_KEY } from "../../../.env";
+
 import axios from "axios";
+import { API_KEY } from "../../../.env";
 
 interface DetailProps {
   title?: string;
@@ -18,22 +19,47 @@ interface DetailProps {
   vote_average?: number;
   id?: number;
 }
+interface Actor {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string;
+}
 
 function Detail() {
   const { state } = useLocation();
-  const { title, poster_path, release_date, vote_average } =
+  const { title, poster_path, release_date, vote_average, id } =
     state as DetailProps;
   const { trailerUrl } = useDetailApi();
   const [loading, setLoading] = useState(true);
   const [showTrailer, setShowTrailer] = useState(false);
+  const [actors, setActors] = useState<Actor[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
       setShowTrailer(true);
     }, 2000);
+
+    // Fetch movie credits
+    const fetchCredits = async (movieId: number) => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+        );
+        console.log("CHARACTERS", response.data.cast);
+        setActors(response.data.cast.slice(0, 10));
+      } catch (error) {
+        console.error("Error fetching movie credits:", error);
+      }
+    };
+
+    if (id) {
+      fetchCredits(id);
+    }
+
     return () => clearTimeout(timer);
-  }, []);
+  }, [id]);
 
   type NetworkType = "main" | "test"; // заглушка для тса
   type DisplayType = "button" | "inline"; // еще одна заглушка
@@ -41,11 +67,6 @@ function Detail() {
     paylinkId: "66721781ed17a2d12654dfb9",
     network: "test" as NetworkType,
     display: "button" as DisplayType, // Указываем тип DisplayType для параметра display
-    onSuccess: (event: any) => console.log("Успешная оплата:", event), // тут я понятия не имею какой ивент писать вообще
-    onError: (event: any) => console.error("Ошибка оплаты:", event),
-    onPending: (event: any) => console.log("Ожидание оплаты:", event),
-    onCancel: () => console.log("Отмена оплаты"),
-    onStartPayment: () => console.log("Начало процесса оплаты"),
   };
   return (
     <>
@@ -79,6 +100,26 @@ function Detail() {
             )}
             <div className={styles.payment}>
               <HelioCheckout config={helioConfig} />
+            </div>
+            <div className={styles.actors}>
+              <h3>Actors</h3>
+              <div className={styles.actorList}>
+                {actors.map((actor) => (
+                  <div key={actor.id} className={styles.actor}>
+                    <img
+                      src={getImage(actor.profile_path)}
+                      alt={actor.name}
+                      className={styles.actorImage}
+                    />
+                    <div className={styles.actorInfo}>
+                      <p className={styles.actorName}>{actor.name}</p>
+                      <p className={styles.actorCharacter}>
+                        as {actor.character}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

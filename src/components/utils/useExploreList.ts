@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { IFilm } from "../../@types/film.types";
+import { API_KEY } from "../../.env";
 
 const useExploreListApi = () => {
   const [exploreList, setExploreList] = useState<IFilm[]>([]);
@@ -9,7 +10,7 @@ const useExploreListApi = () => {
   const getExploreMovies = async (page: number) => {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=cb46d76a0b00b19847f93f36a4873953&language=en-US&page=${page}`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
       );
 
       if (!response.ok) {

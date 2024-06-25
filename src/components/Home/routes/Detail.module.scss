@@ -48,3 +48,14 @@
     margin-top: 50px;
   }
 }
+.actorList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.actor {
+  margin-right: 20px;
+  img {
+    width: 134px;
+    height: 200px;
+  }
+}
