@@ -1,17 +1,18 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./Account.module.scss";
 
-import { useActions } from "../../../hooks/useActions";
 import avatarDefault from "./img/avatar.svg";
-import getRate from "../../utils/getRate";
-import getYear from "../../utils/getYear";
+
 import { useSelector } from "react-redux";
-import ModalRating from "../Modals/ModalRating";
 
-import { RootState } from "../store/store";
+import { RootState } from "../../store/store";
 
-import ModalHandler from "../Modals/modalHandler";
 import AccountHelper from "./AccountHelper/AccountHelper";
+import { useActions } from "../../hooks/useActions";
+import ModalHandler from "../Modals/modalHandler";
+import getYear from "../utils/getYear";
+import getRate from "../utils/getRate";
+import ModalRating from "../Modals/ModalRating";
 
 const Account = () => {
   const { setRating, setAvatar } = useActions();

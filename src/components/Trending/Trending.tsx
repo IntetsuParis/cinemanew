@@ -3,7 +3,7 @@ import styles from "./Trending.module.scss";
 import { Link } from "react-router-dom";
 import LikeThis from "../LikeThis/LikeThis";
 
-import { IFilm } from "../../../@types/film.types";
+import { IFilm } from "../../@types/film.types";
 
 const Trending: React.FC<IFilm> = ({
   id,

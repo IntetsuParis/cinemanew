@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ModalRating.module.scss";
-import { IFilm } from "../../../@types/film.types";
+import { IFilm } from "../../@types/film.types";
 import { ModalProps } from "@mui/material";
 
 interface IModalPosition {

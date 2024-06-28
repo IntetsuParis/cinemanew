@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./Detail.module.scss";
-import getYear from "../../utils/getYear";
-import getImage from "../../utils/getImage";
-import getRate from "../../utils/getRate";
+import getYear from "../utils/getYear";
+import getImage from "../utils/getImage";
+import getRate from "../utils/getRate";
 import ReactPlayer from "react-player";
-import useDetailApi from "../../utils/useDetailApi";
-import Skeleton from "../../Skeleton/Skeleton";
+import useDetailApi from "../utils/useDetailApi";
+import Skeleton from "../Skeleton/Skeleton";
 import { HelioCheckout } from "@heliofi/checkout-react"; //
 
 import axios from "axios";
-import { API_KEY } from "../../../.env";
+import { API_KEY } from "../../.env";
 
 interface DetailProps {
   title?: string;
@@ -48,7 +48,7 @@ function Detail() {
           `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
         );
         console.log("CHARACTERS", response.data.cast);
-        setActors(response.data.cast.slice(0, 10));
+        setActors(response.data.cast.slice(0, 5));
       } catch (error) {
         console.error("Error fetching movie credits:", error);
       }

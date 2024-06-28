@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
-import { IFilm } from "../../../@types/film.types";
-import { useActions } from "../../../hooks/useActions";
+import { IFilm } from "../../@types/film.types";
+import { useActions } from "../../hooks/useActions";
 
 interface IModalHandlerProps {
   children: (props: {

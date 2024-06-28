@@ -4,7 +4,7 @@ import styles from "./Trending.module.scss";
 import Trending from "./Trending";
 import Fire from "./img/Fire.svg";
 import LikeThis from "../LikeThis/LikeThis";
-import useMoviesApi from "../../utils/useMoviesApi";
+import useMoviesApi from "../utils/useMoviesApi";
 import SkeletonTrending from "./SkeletonTrending/SkeletonTrending";
 
 function TrendingFilm() {

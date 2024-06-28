@@ -10,16 +10,14 @@ import like from "./img/like.svg";
 
 import notLike from "./img/notLike.svg";
 
-import useFavoritesToggle from "../../utils/favoritesUtils";
+import useFavoritesToggle from "../utils/favoritesUtils";
 
-import getRate from "../../utils/getRate";
+import getRate from "../utils/getRate";
 
-import getImage from "../../utils/getImage";
+import getImage from "../utils/getImage";
 
-import getYear from "../../utils/getYear";
-import { IFilm } from "../../../@types/film.types";
-
-
+import getYear from "../utils/getYear";
+import { IFilm } from "../../@types/film.types";
 
 const LikeThis: React.FC<IFilm> = ({
   id,

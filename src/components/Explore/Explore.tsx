@@ -1,15 +1,15 @@
 import React, { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Explore.module.scss";
-import getRate from "../../utils/getRate";
-import getImage from "../../utils/getImage";
-import getYear from "../../utils/getYear";
-import useMoviesApi from "../../utils/useMoviesApi";
+import getRate from "../utils/getRate";
+import getImage from "../utils/getImage";
+import getYear from "../utils/getYear";
+import useMoviesApi from "../utils/useMoviesApi";
 import Filter from "../Filter/Filter";
 import useSortedMovies from "../Filter/useSortedMovies";
-import useSearchMoviesApi from "../../utils/useSearchMoviesApi";
+import useSearchMoviesApi from "../utils/useSearchMoviesApi";
 import Search from "./Search/Search";
-import useExploreListApi from "../../utils/useExploreList";
+import useExploreListApi from "../utils/useExploreList";
 
 const Explorer: FC = () => {
   const { exploreList, currentPage, setCurrentPage, totalPages } =

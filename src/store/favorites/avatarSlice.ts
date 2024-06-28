@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import avatar from "../../Account/img/avatar.svg";
+import avatar from "../../components/Account/img/avatar.svg";
 
 type AvatarState = {
   image: string | null;

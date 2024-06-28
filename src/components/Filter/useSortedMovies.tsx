@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { IFilm } from "../../../@types/film.types";
+import { IFilm } from "../../@types/film.types";
 
 const useSortedMovies = (exploreList: IFilm[]) => {
   const [sortByTitle, setSortByTitle] = useState("default");

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IFilm } from "../../../../@types/film.types";
+import { IFilm } from "../../@types/film.types";
 
 const initialState: IFilm[] = [];
 

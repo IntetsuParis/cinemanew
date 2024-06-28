@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 
 import { IFilm } from "../../@types/film.types";
+import { API_KEY } from "../../.env";
 
 const useMoviesApi = () => {
   const [movieList, setMovieList] = useState<IFilm[]>([]);
@@ -11,7 +12,7 @@ const useMoviesApi = () => {
   const getMovies = async () => {
     try {
       const response = await fetch(
-        "https://api.themoviedb.org/3/movie/popular?api_key=cb46d76a0b00b19847f93f36a4873953&language=en-US"
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US`
       );
 
       if (!response.ok) {
@@ -29,7 +30,7 @@ const useMoviesApi = () => {
   const getLikeThis = async () => {
     try {
       const response = await fetch(
-        "https://api.themoviedb.org/3/movie/top_rated?api_key=cb46d76a0b00b19847f93f36a4873953&language=en-US"
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`
       );
 
       if (!response.ok) {
