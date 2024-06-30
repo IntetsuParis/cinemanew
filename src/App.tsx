@@ -37,7 +37,6 @@ function App() {
       }
     );
     connect().catch(() => {
-      // Handle the error if the connection fails
       console.error("Failed to connect wallet");
     });
   }, [connect]);

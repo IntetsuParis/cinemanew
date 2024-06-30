@@ -39,11 +39,7 @@ const Priview: React.FC = () => {
       <div className={styles.photos}>
         <a href="#">
           <img className={styles.spider} src={Spider} alt="Spider" />
-          <Button>
-            <a href="#">
-              <img src={PlayTrailer} alt="Play Trailer" />
-            </a>
-          </Button>
+
           <img
             className={styles.galaxy}
             src={Galaxy}

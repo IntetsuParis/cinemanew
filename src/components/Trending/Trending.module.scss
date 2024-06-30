@@ -8,23 +8,15 @@
     width: 51px;
     height: 42px;
   }
+  @media (max-width: 1384px) {
+    margin: 0px 25px 0px 50px;
+  }
 }
 
 .leftSection {
   display: flex;
   align-items: center;
   position: relative;
-  &:before {
-    content: " ";
-    background: rgba(80, 74, 121, 0.5);
-    width: 600px;
-    height: 3px;
-
-    right: 30px;
-    left: 320px;
-
-    position: absolute;
-  }
 }
 .leftSectionLikeThis {
   position: relative;
@@ -60,6 +52,7 @@
 .movie__container {
   display: flex;
   justify-content: space-between;
+
   flex-wrap: nowrap;
   margin: 35px;
 
@@ -94,6 +87,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
+  margin-left: 55px;
 }
 .likefilm {
   display: flex;
