@@ -66,7 +66,7 @@ function Detail() {
   const helioConfig = {
     paylinkId: "66721781ed17a2d12654dfb9",
     network: "test" as NetworkType,
-    display: "button" as DisplayType, // Указываем тип DisplayType для параметра display
+    display: "button" as DisplayType, //  тип DisplayType для параметра display
   };
   return (
     <>

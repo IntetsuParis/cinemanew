@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Account from "./components/Account/Account";
 import { Wallet } from "./components/WalletContext/Wallet";
 import { useWallet } from "@solana/wallet-adapter-react";
+import Actors from "./components/Actors/Actors";
 function App() {
   const { connect } = useWallet();
 
@@ -51,6 +52,7 @@ function App() {
           <Route path="/movie-details" element={<Detail />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/actors" element={<Actors />} />
         </Routes>
       </BrowserRouter>
     </Wallet>

@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .actors {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 40px;
+
+    flex-wrap: wrap;
+  }
+}
