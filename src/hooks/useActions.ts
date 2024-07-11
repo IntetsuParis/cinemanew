@@ -7,12 +7,21 @@ import {
   toggleToFavorites,
   removeFavorite,
 } from "../store/favorites/favorites.slice";
+import {
+  removeFavoriteActors,
+  toggleToFavoritesActors,
+} from "../store/favorites/actorsSlice";
+import { removeUser, setUser } from "../store/registration/userSlice";
 
 const rootActions = {
   setRating,
   setAvatar,
   removeFavorite,
   toggleToFavorites,
+  toggleToFavoritesActors,
+  removeFavoriteActors,
+  setUser,
+  removeUser,
 };
 
 export const useActions = () => {

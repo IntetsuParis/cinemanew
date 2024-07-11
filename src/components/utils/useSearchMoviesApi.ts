@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { IFilm } from "../../@types/film.types";
-import { API_KEY } from "../../.env";
+import { API_KEY } from "../../.env.js";
 
 const useSearchMoviesApi = () => {
   const [searchResults, setSearchResults] = useState<IFilm[]>([]);

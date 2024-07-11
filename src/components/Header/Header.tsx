@@ -28,7 +28,7 @@ const Header = () => {
               <Link to="/actors">Actors</Link>
             </li>
             <li>
-              <a href="#">News</a>
+              <Link to="/registration">Register</Link>
             </li>
             <li>
               <a href="#">Movies</a>

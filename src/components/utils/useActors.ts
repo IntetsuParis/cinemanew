@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_KEY } from "../../.env";
+import { API_KEY } from "../../.env.js";
 
 import React, { useEffect, useState } from "react";
 import { Actor } from "../../@types/actors.types";

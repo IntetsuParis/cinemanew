@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { IVideo } from "../../@types/video.types";
 import { ILocationState } from "../../@types/film.types";
-import { API_KEY } from "../../.env";
+import { API_KEY } from "../../.env.js";
 
 const useDetailApi = () => {
   const location = useLocation();

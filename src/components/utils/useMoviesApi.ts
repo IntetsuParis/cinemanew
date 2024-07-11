@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 import { IFilm } from "../../@types/film.types";
-import { API_KEY } from "../../.env";
+import { API_KEY } from "../../.env.js";
 
 const useMoviesApi = () => {
   const [movieList, setMovieList] = useState<IFilm[]>([]);

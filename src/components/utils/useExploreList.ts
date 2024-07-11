@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IFilm } from "../../@types/film.types";
-import { API_KEY } from "../../.env";
+import { API_KEY } from "../../.env.js";
 
 const useExploreListApi = () => {
   const [exploreList, setExploreList] = useState<IFilm[]>([]);

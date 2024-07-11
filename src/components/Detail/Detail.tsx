@@ -10,7 +10,7 @@ import Skeleton from "../Skeleton/Skeleton";
 import { HelioCheckout } from "@heliofi/checkout-react"; //
 
 import axios from "axios";
-import { API_KEY } from "../../.env";
+import { API_KEY } from "../../.env.js";
 
 interface DetailProps {
   title?: string;

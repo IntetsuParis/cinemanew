@@ -5,6 +5,7 @@ import ReactDOM from "react-dom/client";
 import { store, persistor } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
+import "./firebase";
 
 import App from "./App";
 

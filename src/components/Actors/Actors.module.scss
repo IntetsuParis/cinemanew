@@ -5,9 +5,33 @@
 
   .actors {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin: 0 40px;
+    .imageContainer {
+      position: relative;
+      .favoriteIcon {
+        position: absolute;
+        right: 29px;
+        bottom: 135px;
+      }
+    }
 
-    flex-wrap: wrap;
+    .actor {
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: calc(20% - 20px);
+      img {
+        width: 100%;
+        max-width: 150px;
+        height: auto;
+      }
+
+      .subinfo {
+        text-align: center;
+      }
+    }
   }
 }

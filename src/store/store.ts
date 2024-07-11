@@ -5,6 +5,8 @@ import { ratingReducer } from "./favorites/ratingSlice";
 import { avatarReducer } from "./favorites/avatarSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { actorsReducer } from "./favorites/actorsSlice";
+import { userReducer } from "./registration/userSlice";
 
 const persistConfig = {
   key: "root",
@@ -13,8 +15,10 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   favorites: favoriteReducer,
+  favoriteActors: actorsReducer,
   avatar: avatarReducer,
   rating: ratingReducer,
+  user: userReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
