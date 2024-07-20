@@ -13,10 +13,14 @@ import ModalHandler from "../Modals/modalHandler";
 import getYear from "../utils/getYear";
 import getRate from "../utils/getRate";
 import ModalRating from "../Modals/ModalRating";
+import { useNavigate } from "react-router-dom";
+import Authorization from "../Authorization/Authorization";
 
 const Account = () => {
-  const { setRating, setAvatar } = useActions();
+  const { setAvatar } = useActions();
+  const { isAuth } = useSelector((state: RootState) => state.user);
   const storedImage = useSelector((state: RootState) => state.avatar.image);
+  const navigate = useNavigate();
   const userRatings = useSelector(
     (state: RootState) => state.rating.userRating
   );
@@ -46,6 +50,16 @@ const Account = () => {
       localStorage.setItem("avatar", imageUrl);
     }
   };
+  useEffect(() => {
+    if (!isAuth) {
+      navigate("/login");
+    }
+  }, [isAuth, navigate]);
+
+  // Если пользователь не аутентифицирован, перенаправляем на страницу Authorization
+  if (!isAuth) {
+    return <>{navigate("/Authorization")}</>;
+  }
 
   return (
     <ModalHandler>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Authorization.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -9,6 +9,7 @@ import Form from "./Form";
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const { setUser } = useActions();
+  const [error, setError] = useState<string | null>(null);
 
   const handleLogin = (email: string, password: string) => {
     const auth = getAuth();
@@ -25,6 +26,7 @@ const Login: React.FC = () => {
       })
       .catch((error) => {
         console.error("Ошибка входа:", error);
+        setError("Invalid email or password");
       });
   };
 
@@ -32,6 +34,8 @@ const Login: React.FC = () => {
     <div>
       <h1>Login in</h1>
       <Form title="Login in" handleClick={handleLogin} />
+      {error && <p className={styles.error}>{error}</p>}
+
       <h1>
         <p>
           Or
