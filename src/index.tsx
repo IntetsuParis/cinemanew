@@ -10,6 +10,7 @@ import "./firebase";
 import App from "./App";
 
 import "./styles/index.scss";
+import { HashRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,7 +19,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <App />
+        <HashRouter>
+          <App />
+        </HashRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>
