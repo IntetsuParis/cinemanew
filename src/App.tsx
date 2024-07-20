@@ -41,7 +41,7 @@ function App() {
 
   return (
     <Wallet>
-      <BrowserRouter>
+      <BrowserRouter basename="/cinemanew">
         <Header />
         <ToastContainer />
         <Routes>
