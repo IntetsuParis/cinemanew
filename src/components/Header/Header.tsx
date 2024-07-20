@@ -9,7 +9,7 @@ const Header = () => {
     <ul className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <Link to="/cinemanew" state={{ fromLocation: true }}>
+          <Link to="/" state={{ fromLocation: true }}>
             <img src={logo} alt="Logo" />
             <h1>Movies</h1>
           </Link>
