@@ -8,7 +8,6 @@ import ReactPlayer from "react-player";
 import useDetailApi from "../utils/useDetailApi";
 import Skeleton from "../Skeleton/Skeleton";
 import { HelioCheckout } from "@heliofi/checkout-react"; //
-
 import axios from "axios";
 import { API_KEY } from "../../.env.js";
 
@@ -101,6 +100,7 @@ function Detail() {
             <div className={styles.payment}>
               <HelioCheckout config={helioConfig} />
             </div>
+
             <div className={styles.actors}>
               <h3>Actors</h3>
               <div className={styles.actorList}>
