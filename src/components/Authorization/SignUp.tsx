@@ -6,7 +6,7 @@ import Form from "./Form";
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
-  const { setUser } = useActions(); // Вот правильное использование внутри компонента React
+  const { setUser } = useActions();
 
   const handleRegister = (email: string, password: string) => {
     const auth = getAuth();
@@ -16,13 +16,12 @@ const SignUp: React.FC = () => {
         setUser({
           email: user.email,
           id: user.uid,
-          token: user.refreshToken, // или accessToken, в зависимости от вашего случая
+          token: user.refreshToken,
         });
-        navigate("/"); // Перенаправляем на главную страницу после успешной регистрации
+        navigate("/");
       })
       .catch((error) => {
         console.error("Ошибка регистрации:", error);
-        // Обработка ошибок регистрации
       });
   };
 
